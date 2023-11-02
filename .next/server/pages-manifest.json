@@ -1,0 +1,17 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/myRefferals": "pages/myRefferals.js",
+  "/updateProfile": "pages/updateProfile.js",
+  "/api/updateProfile": "pages/api/updateProfile.js",
+  "/api/myrefferals": "pages/api/myrefferals.js",
+  "/total": "pages/total.js",
+  "/api/totalUser": "pages/api/totalUser.js",
+  "/fa": "pages/fa.js",
+  "/api/gpw": "pages/api/gpw.js",
+  "/login": "pages/login.js",
+  "/api/getapproverequest": "pages/api/getapproverequest.js",
+  "/fa1": "pages/fa1.js",
+  "/api/sociallink": "pages/api/sociallink.js"
+}
