@@ -98,6 +98,16 @@ const LinkPage = () => {
                         SOCIAL LINK
                       </div>
                     </Link>
+                    
+                    <Link href={"/Advertisement"}> 
+                      <div
+                        className="link-item ten-sec "
+                    
+                        id="ten-item"
+                      >
+                        Advertisement
+                      </div>
+                    </Link>
                    
                   </div>
                   
