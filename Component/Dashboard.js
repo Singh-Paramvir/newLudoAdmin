@@ -99,11 +99,11 @@ const LinkPage = () => {
                       </div>
                     </Link>
                     
-                    <Link href={"/Advertisement"}> 
+                    <Link href={"/advertisement"}> 
                       <div
-                        className="link-item ten-sec "
+                        className="link-item acc-sec "
                     
-                        id="ten-item"
+                        id="acc-item"
                       >
                         Advertisement
                       </div>

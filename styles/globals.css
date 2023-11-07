@@ -1796,6 +1796,19 @@ sup {
     background-size: cover;
 
 }
+.acc-sec::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    height: 38.28px;
+    width: 38.28px;
+    background-image: url(\/add.png);
+    position: absolute;
+    top: 25%;
+    float: left;
+    background-size: cover;
+
+}
 
 #first-item {
     margin-left: 20px !important;
@@ -1812,6 +1825,10 @@ sup {
 }
 #ten-item{
     margin-left: 20px !important;
+    margin-top: 20px !important;
+}
+#acc-item{
+    margin-left: 0px !important;
     margin-top: 20px !important;
 }
 #seconds-item {margin-top: 20px;}

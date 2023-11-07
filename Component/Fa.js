@@ -172,9 +172,9 @@ const handleAddChips3 = async (e) => {
                     <th id="fuds" scope="col">
                       MobileNumber
                     </th>
-                    <th id="fuds" scope="col">
+                    {/* <th id="fuds" scope="col">
                       Fee
-                    </th>
+                    </th> */}
                     <th id="fuds" scope="col">
                       PaymentMethod
                     </th>
@@ -203,7 +203,7 @@ const handleAddChips3 = async (e) => {
       <td>{index + 1}</td>
       <td>{referral.firstName}</td>
       <td>{referral.mobileNumber}</td>
-      <td>{referral.money}</td>
+      {/* <td>0</td> */}
       <td>{referral.paymentMethod}</td>
       <td>{referral.totalAmount}</td>
       <td>{referral.transactionId}</td>
