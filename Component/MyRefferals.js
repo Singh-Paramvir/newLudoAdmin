@@ -154,7 +154,10 @@ const handleAddChips3 = async (e) => {
                       MobileNumber
                     </th>
                     <th id="fuds" scope="col">
-                    RefferedCode
+                    Show_count
+                    </th>
+                    <th id="fuds" scope="col">
+                    Click_count
                     </th>
                     <th id="fuds" scope="col">
                       Delete User
@@ -171,7 +174,8 @@ const handleAddChips3 = async (e) => {
       <td>{referral.refferedBy}</td>
       <td>{referral.balance}</td>
       <td>{referral.mobileNumber}</td>
-      <td>{referral.refferedCode}</td>
+      <td>{referral.show_count}</td>
+      <td>{referral.click_count}</td>
                         <td>
                           <Button
                             color="danger" // Use the danger color for the "Cut Chips" button
