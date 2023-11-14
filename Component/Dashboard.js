@@ -1,20 +1,51 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-// import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const LinkPage = () => {
+  const [selectedSegment, setSelectedSegment] = useState(null);
   const [usdAmt, setUsdAmt] = useState();
   const [name, setName] = useState(null);
   const router = useRouter();
 
+  useEffect(() => {
+    // Load the stored segment value from localStorage on component mount
+    const storedSegment = localStorage.getItem('buttonValue');
+    if (storedSegment) {
+      setSelectedSegment(storedSegment);
+    }
+  }, []);
 
+  const handleButtonClick = async (buttonValue) => {
+    if (selectedSegment !== null) {
+      try {
+        console.log("Button value:", buttonValue);
+        localStorage.setItem('buttonValue',buttonValue)
+
+                //const response = await axios.post('your-api-endpoint', { segment: selectedSegment });
+
+        // Handle the API response as needed
+        // console.log(response.data);
+      } catch (error) {
+        console.error('Error making API call:', error);
+      }
+    } else {
+      // Handle the case where no segment is selected
+      console.warn('Please select a segment before submitting.');
+    }
+  };
+  const onSegmentClick = (segment, buttonValue) => {
+    setSelectedSegment(segment);
+    handleButtonClick(buttonValue);
+  };
   function onSubmitHandler(event) {
     event.preventDefault();
+    // You can add additional form submission logic here if needed
   }
+
   return (
     <div>
       <section className="profile-sec">
@@ -23,14 +54,70 @@ const LinkPage = () => {
             <form className="funds-sec" onSubmit={onSubmitHandler}>
               <h3 className="funds-heading">Your Dashboard</h3>
               <h4 className="wel-text">
-                {/* Welcome NAME ! */}{" "}
+                {/* Welcome NAME ! */}
                 <strong style={{ marginBottom: "10px !important" }}>
                   {" "}
                   Welcome {name?.firstName} !{" "}
                 </strong>{" "}
-                <br /> <br/>
-                Hey there, Ludo fanatics! Get ready to roll the dice and dive into an epic journey of strategy and fun. As the game's master, I'm here to ensure your Ludo adventure is packed with excitement and challenges. Let's roll, move those pieces, and aim for victory together!                
+                <br /> <br />
+                Hey there, Ludo fanatics! Get ready to roll the dice and dive into an epic journey of strategy and fun. As the game's master, I'm here to ensure your Ludo adventure is packed with excitement and challenges. Let's roll, move those pieces, and aim for victory together!
               </h4>
+              <br></br>
+                {/* Segment selection buttons */}
+                <div className="segment-buttons">
+  <button
+    className={`segment-button ${selectedSegment === "1" ? "active" : ""}`}
+    onClick={() => onSegmentClick("1", 1)}
+  >
+    Segment 1
+  </button>
+
+  <button
+    className={`segment-button ${selectedSegment === "2" ? "active" : ""}`}
+    onClick={() => onSegmentClick("2", 2)}
+  >
+    Segment 2
+  </button>
+
+  <button
+    className={`segment-button ${selectedSegment === "3" ? "active" : ""}`}
+    onClick={() => onSegmentClick("3", 3)}
+  >
+    Segment 3
+  </button>
+
+  <button
+    className={`segment-button ${selectedSegment === "0" ? "active" : ""}`}
+    onClick={() => onSegmentClick("0", 0)}
+  >
+    All Users
+  </button>
+</div>
+
+{/* ... (the rest of your code) */}
+
+<style jsx>{`
+  .segment-button {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .segment-button.active {
+    background-color: green; /* Set the background color for the active button */
+    color: white; /* Set the text color for the active button */
+    /* Add any other styles you want for the active button */
+  }
+`}</style>
+
+
+
+              {/* Submit button */}
+              {/* <button type="button" onClick={handleButtonClick}>Submit</button> */}
 
               <ToastContainer
                 position="top-right"
@@ -44,30 +131,26 @@ const LinkPage = () => {
                 pauseOnHover
               />
 
-<div className="col-head mt-3 text-center d-flex justify-content-center" id="col-head">
-  <h6 className="mb-0 mt-0" style={{ fontSize: "14px" }}>
-                
+              <div className="col-head mt-3 text-center d-flex justify-content-center" id="col-head">
+                <h6 className="mb-0 mt-0" style={{ fontSize: "14px" }}>
                 </h6>
 
                 <div className="col-md-7 left-headSec">
                   <div className="link-head  " id="first-sec">
-                   
 
                     <Link href={"/updateProfile"}>
                       <div
                         className="link-item first-sec first-set"
                         id="first-item "
                       >
-                       SLOTES
+                        SLOTES
                       </div>
                     </Link>
 
-                 
-                      <div className="link-item third-sec" id="sec-item" onClick={()=>router.push("/myRefferals")}>
-                        ALL USERS
-                      
-                      </div>
-                  
+                    <div className="link-item third-sec" id="sec-item" onClick={() => router.push("/myRefferals")}>
+                      ALL USERS
+                    </div>
+
                     <Link href={"/total"}>
                       <div className="link-item five-sec" id="sec-item">
                         SORT USER
@@ -79,54 +162,47 @@ const LinkPage = () => {
                       </div>
                     </Link>
 
-
-                    <Link href={"/login"}> 
+                    <Link href={"/login"}>
                       <div
                         className="link-item eleven-sec "
-                    
                         id="thirds-item"
                       >
                         APPROVED REQUEST
                       </div>
                     </Link>
-                    <Link href={"/fa1"}> 
+                    <Link href={"/fa1"}>
                       <div
                         className="link-item ten-sec "
-                    
                         id="ten-item"
                       >
                         SOCIAL LINK
                       </div>
                     </Link>
-                    
-                    <Link href={"/advertisement"}> 
+
+                    <Link href={"/advertisement"}>
                       <div
                         className="link-item acc-sec "
-                    
                         id="acc-item"
                       >
                         Advertisement
                       </div>
                     </Link>
-                   
+
                   </div>
-                  
+
                 </div>
 
-               
                 <div className="col-md-3"></div>
               </div>
+
+            
+
             </form>
           </div>
         </div>
       </section>
     </div>
   );
-
 };
 
 export default LinkPage;
-
-
-
-

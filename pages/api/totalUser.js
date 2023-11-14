@@ -1,18 +1,20 @@
 import axios from "axios";
-
+import https from 'https';
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       // const {data} = req.body;
       const {token}=req.body
       const {data} = req.body;
-      console.log(token,data, "to be send to api tp");
+      const agent = new https.Agent({
+        rejectUnauthorized: false,
+      });
       var config = {
         method: "post",
-        url: "http://airaicloud.com:6000/api/v1/admin//usercount",
+        url: "https://airaicloud.com:6000/api/v1/admin//usercount",
         headers:{
           'Authorization': `Bearer ${token}`,
-      },data,
+      },data, httpsAgent: agent,
       };
       await axios(config).then(function (response) {
         console.log(JSON.stringify(response.data));

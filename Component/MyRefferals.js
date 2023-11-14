@@ -21,8 +21,14 @@ const MyRefferal = () => {
 
   async function myReferrals() {
     try {
+     
       const token = localStorage.getItem("token");
-      let res = await axios.post("/api/myrefferals", { token: token });
+      const bv = localStorage.getItem('buttonValue')
+      const data = {
+        buttonValue:bv
+      }
+      console.log(data,"dfdfdfdf");
+      let res = await axios.post("/api/myrefferals", { token: token,data });
       const response = res.data;
       console.log(response.data, "to get the data from api");
       setReferrals(response.data.data); // Update to access data property correctly
@@ -132,7 +138,7 @@ const handleAddChips3 = async (e) => {
                 >
                   <img src={Arrow.src} onClick={() => router.back()} />
                 </span>
-                My Referrals
+                All Users
               </h3>
 
               <table className="table funds-table mt-3" id="funds-color">

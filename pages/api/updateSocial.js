@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       console.log(token,data, "to be send to api tp");
       var config = {
         method: "post",
-        url: "http://airaicloud.com:6000/api/v1/admin/updatesocial",
+        url: "https://airaicloud.com:6000/api/v1/admin/updatesocial",
         headers:{
           'Authorization': `Bearer ${token}`,
       },data,

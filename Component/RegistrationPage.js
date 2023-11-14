@@ -13,9 +13,10 @@ const Login = () => {
     try {
       const res = await axios.post("api/login", data);
       const response = res.data;
-      console.log(response.data.data, "response data!!!!!!!");
+      console.log(response, "response data aya ure");
       // console.log(response.data.data.xx.data, "to check the token for storage")
       localStorage.setItem('token', response.data.data)
+      localStorage.setItem('buttonValue',0)
 
       notify("User Login Successfully");
       setTimeout(() => {
