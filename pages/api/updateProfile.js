@@ -1,5 +1,5 @@
 import axios from "axios";
-import https from 'https';
+// import http from 'http';
 // import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
@@ -8,15 +8,15 @@ export default async function handler(req, res) {
     try {
       const {token}= req.body;
       const data = req.body;
-      const agent = new https.Agent({
-        rejectUnauthorized: false,
-      });
+      // const agent = new http.Agent({
+      //   rejectUnauthorized: false,
+      // });
       var config = {
         method: "post",
-        url: "https://airaicloud.com:6000/api/v1/admin/getslotes",
+        url: "http://airaicloud.com:6000/api/v1/admin/getslotes",
         headers: {
             'Authorization': `Bearer ${token}`
-          },httpsAgent: agent,
+          },
       };
       await axios(config).then(function (response) {
         console.log(JSON.stringify(response.data));

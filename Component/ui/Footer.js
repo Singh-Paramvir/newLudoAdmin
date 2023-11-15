@@ -18,8 +18,8 @@ const Footer = () => {
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">All rights reserved</a></li>
     </ul> */}
     <p class="text-center text-muted">© 2022 HealthiWealthi™. All rights reserved | <a href="#" className="form-script-tag-3443593" style={{textDecoration:"none", color:"#F8C600", fontWeight:"600"}}>Contact us </a>
-    <Script id="form-script-tag-3443593" src="https://www.healthiwealthi.net/public/remote/page/4931931cf737288ba0e8b30a751ad4c276fd7bc.js"></Script>  |
-     Privacy Policy | Terms of Use |  <a href=" https://healthiwealthi.io/rxheal/cookie.php" target="_blank" style={{textDecoration:"none", color:"#F8C600", fontWeight:"600", paddingLeft:"5px"}}>   Cookie Policy  </a>
+    <Script id="form-script-tag-3443593" src="http://www.healthiwealthi.net/public/remote/page/4931931cf737288ba0e8b30a751ad4c276fd7bc.js"></Script>  |
+     Privacy Policy | Terms of Use |  <a href=" http://healthiwealthi.io/rxheal/cookie.php" target="_blank" style={{textDecoration:"none", color:"#F8C600", fontWeight:"600", paddingLeft:"5px"}}>   Cookie Policy  </a>
     </p>
  
   </footer>

@@ -8,7 +8,7 @@ export default async function handler(req, res) {
       console.log(data, "to be send to api tp!!!!");
       var config = {
         method: "post",
-        url: "https://airaicloud.com:6000/api/v1/admin/deleteslote",
+        url: "http://airaicloud.com:6000/api/v1/admin/deleteslote",
         headers:{
           'Authorization': `Bearer ${token}`,
       },data,

@@ -1,21 +1,21 @@
 import axios from "axios";
-import https from 'https';
+// import http from 'http';
 import CircularJSON from 'circular-json';
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const data = req.body;
-      const agent = new https.Agent({
-        rejectUnauthorized: false,
-      });
+      // const agent = new http.Agent({
+      //   rejectUnauthorized: false,
+      // });
       console.log(data, "to be send to api!!!!!!!!!!");
     
       var config = {
         method: "post",
-        url: "https://airaicloud.com:6000/api/v1/auth/adminlogin",
+        url: "http://airaicloud.com:6000/api/v1/auth/adminlogin",
         data,
-        httpsAgent: agent
+        // httpAgent: agent
       };
       
       const response = await axios(config);
