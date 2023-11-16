@@ -1,6 +1,5 @@
 import axios from "axios";
-// import http from 'http';
-import CircularJSON from 'circular-json';
+
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -18,9 +17,10 @@ export default async function handler(req, res) {
         // httpAgent: agent
       };
       
-      const response = await axios(config);
-      console.log(CircularJSON.stringify(response.data));
-      res.status(200).json({ data: CircularJSON.parse(CircularJSON.stringify(response.data)) });
+      await axios(config).then(function (response) {
+        console.log(JSON.stringify(response.data));
+        res.status(200).json({ data: response.data});
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json({ Error: err });
