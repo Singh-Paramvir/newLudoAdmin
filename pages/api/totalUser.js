@@ -9,6 +9,7 @@ export default async function handler(req, res) {
       // const agent = new http.Agent({
       //   rejectUnauthorized: false,
       // });
+      console.log(data,"data ");
       var config = {
         method: "post",
         url: "http://airaicloud.com:6000/api/v1/admin//usercount",
@@ -17,7 +18,7 @@ export default async function handler(req, res) {
       },data,
       };
       await axios(config).then(function (response) {
-        console.log(JSON.stringify(response.data));
+        //console.log(JSON.stringify(response.data));
         res.status(200).json({ data: response.data});
       });
     } catch (err) {

@@ -39,7 +39,11 @@ const MyRefferal = () => {
   async function myReferrals() {
     try {
       const token = localStorage.getItem("token");
-      let res = await axios.post("/api/updateProfile", { token: token }); 
+      const data1 = localStorage.getItem("buttonValue");
+      let data = {
+            data:data1
+      }
+      let res = await axios.post("/api/updateProfile", { token: token,data }); 
       const response = res.data;
       console.log(response.data, "to get the data from api");
       setReferrals(response.data.data); // Update to access data property correctly
@@ -122,12 +126,13 @@ const MyRefferal = () => {
 
   const addslothandle = async (e) => {
  
+   const type = localStorage.getItem("buttonValue");
      addplayer1 = addrupee.current.value;
       addrupee1 = addplayer.current.value;
      addtime1 = addtime.current.value;
 
  const data = {
-  addplayer1,addrupee1,addtime1
+  type, addplayer1,addrupee1,addtime1
  }
  console.log(data,"here add slote data");
 
