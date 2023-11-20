@@ -21,8 +21,12 @@ const MyRefferal = () => {
 
   async function myReferrals() {
     try {
+      let buttonValue = localStorage.getItem('buttonValue')
+      const data ={
+        buttonValue
+      }
       const token = localStorage.getItem("token");
-      let res = await axios.post("/api/gpw", { token: token });
+      let res = await axios.post("/api/gpw", { token: token,data });
       const response = res.data;
       console.log(response.data, "to get the data from api");
       setReferrals(response.data.data); // Update to access data property correctly

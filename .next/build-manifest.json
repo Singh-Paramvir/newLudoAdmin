@@ -30,10 +30,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/dashboard.js"
     ],
-    "/updateProfile": [
+    "/fa": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/updateProfile.js"
+      "static/chunks/pages/fa.js"
+    ],
+    "/login": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/login.js"
     ]
   },
   "ampFirstPages": []
