@@ -14,6 +14,10 @@ let time;
 let addplayer1;
 let addrupee1;
 let addtime1
+let first;
+let second;
+let third;
+let fourth;
 
 const MyRefferal = () => {
 
@@ -28,8 +32,10 @@ const MyRefferal = () => {
   const addrupee = useRef()
   const addplayer = useRef()
   const addtime = useRef()
-
-  
+  const first = useRef()
+  const second = useRef()
+  const third = useRef()
+  const fourth = useRef()
     // Function to open the second modal
     const openModal1 = () => {
       console.log("Opening modal");
@@ -83,6 +89,10 @@ const MyRefferal = () => {
       rupees = firstRef1.current.value;
       players = firstRef.current.value;
       time = firstRef2.current.value;
+      first = first.current.value;
+      second = second.current.value;
+      third = third.current.value;
+      fourth = fourth.current.value;
   
       // Create an empty data object
       const data = {};
@@ -99,6 +109,18 @@ const MyRefferal = () => {
       }
       if (time !== null && time !== "") {
         data.time = time;
+      }
+      if (first !== null && first !== "") {
+        data.first = first;
+      }
+      if (second !== null && second !== "") {
+        data.second = second;
+      }
+      if (third !== null && third !== "") {
+        data.third = third;
+      }
+      if (fourth !== null && fourth !== "") {
+        data.fourth = fourth;
       }
   
       console.log(data, "moon hererererererere ");
@@ -130,9 +152,13 @@ const MyRefferal = () => {
      addplayer1 = addrupee.current.value;
       addrupee1 = addplayer.current.value;
      addtime1 = addtime.current.value;
+     first = first.current.value;
+     second = second.current.value;
+     third = third.current.value;
+     fourth = fourth.current.value;
 
  const data = {
-  type, addplayer1,addrupee1,addtime1
+  type, addplayer1,addrupee1,addtime1,first,second,third,fourth
  }
  console.log(data,"here add slote data");
 
@@ -140,13 +166,13 @@ const MyRefferal = () => {
  console.log(token, "fhfhjfh");
 
  // api call
- let res = await axios.post("/api/addSlote", { token: token, data });
- const response = res.data;
- console.log(response, "response data");
+  let res = await axios.post("/api/addSlote", { token: token, data });
+  const response = res.data;
+  console.log(response, "response data");
  setModalOpen(false);
- setTimeout(() => {
+  setTimeout(() => {
   window.location.reload();
-}, 1000);
+ }, 1000);
      
   }
   // handle delete slotes
@@ -221,6 +247,42 @@ const handleDeleteSlot = async (e) => {
             required
             ref={firstRef2}
           />
+           <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="First"
+            required
+            ref={first}
+          />
+            <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="Second"
+            required
+            ref={second}
+          />
+            <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="Third"
+            required
+            ref={third}
+          />
+            <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="Fourth"
+            required
+            ref={fourth}
+          />
 
         </ModalBody>
         <ModalFooter>
@@ -281,6 +343,42 @@ const handleDeleteSlot = async (e) => {
             placeholder="Time"
             required
             ref={addtime}
+          />
+            <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="First"
+            required
+            ref={first}
+          />
+            <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="Second"
+            required
+            ref={second}
+          />
+            <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="third"
+            required
+            ref={third}
+          />
+            <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="Fourth"
+            required
+            ref={fourth}
           />
 
         </ModalBody>
@@ -356,16 +454,31 @@ const handleDeleteSlot = async (e) => {
                       Id
                     </th>
                     <th id="fuds" scope="col">
-                      rupees
+                      Rupees
                     </th>
                     <th id="fuds" scope="col">
-                      player
+                      Player
                     </th>
                     <th id="fuds" scope="col">
-                      time
+                      Time
                     </th>
                     <th id="fuds" scope="col">
-                      active
+                      Active
+                    </th>
+                    <th id="fuds" scope="col">
+                      SegmentType
+                    </th>
+                    <th id="fuds" scope="col">
+                      First
+                    </th>
+                    <th id="fuds" scope="col">
+                      Second
+                    </th>
+                    <th id="fuds" scope="col">
+                      Third
+                    </th>
+                    <th id="fuds" scope="col">
+                      Fourth
                     </th>
                     <th id="fuds" scope="col">
                       Update
@@ -386,6 +499,11 @@ const handleDeleteSlot = async (e) => {
                         <td>{referral.players}</td>
                         <td>{referral.time}</td>
                         <td>{referral.active ? "1" : "0"}</td>
+                        <td>{referral.type}</td>
+                        <td>{referral.first}</td>
+                        <td>{referral.second}</td>
+                        <td>{referral.third}</td>
+                        <td>{referral.fourth}</td>
                         <td> <Button color="primary" type="button"
                           onClick={() => apiFunction(referral.id)}>
                           Update Slotes
