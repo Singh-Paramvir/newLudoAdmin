@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
-
+let ID;
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -52,12 +52,16 @@ const Login = () => {
     // Function to fetch the current chips and prices from the server
     async function fetchCurrentData() {
       try {
+        let buttonValue = localStorage.getItem('buttonValue')
+        const data1 ={
+          buttonValue
+        }
         const token = localStorage.getItem("token");
         // Make the API call to fetch the data
-        let res = await axios.post("/api/sociallink", { token: token });
+        let res = await axios.post("/api/sociallink", { token: token,data1 });
         const data = res.data; // Assuming the response contains chips and prices data
-          console.log(data,"daawrtrerr");
-          console.log(data.data,"asasasaas");
+        console.log(data.data.data.id,"9999999999999");
+        ID : data.data.data.id
         // Update the state with the fetched data
         setCurrentChips1(data.data.data.instagram);
         setCurrentChips2(data.data.data.rateUs);
@@ -67,6 +71,12 @@ const Login = () => {
         setCurrentChips6(data.data.data.minimum);
         setCurrentChips7(data.data.data.withdrawFee);
         setCurrentChips8(data.data.data.String);
+        console.log(buttonValue,"bvbvbvb");
+        if(buttonValue == 0){
+          notifyError("Please Select a SegmentType");
+          return;
+        }
+        notify("Data Get Successfully");
 
       } catch (err) {
         console.log(err);
@@ -101,7 +111,8 @@ const Login = () => {
     }
   }
 
- async function onSubmitHandler(event) {
+ async function onSubmitHandler(event) { 
+  console.log("function hit");
     event.preventDefault();
 
     const instagram = emailRef.current.value;
@@ -112,8 +123,10 @@ const Login = () => {
     const minimum = passwordRef4.current.value;
     const withdrawFee = passwordRef5.current.value;
     const String = passwordRef8.current.value;
-    
+    const ID = localStorage.getItem('buttonValue')
+     console.log(ID,"get id ");
     const data = {
+      ID ,
       instagram,
       rateUs,
       termscondition,

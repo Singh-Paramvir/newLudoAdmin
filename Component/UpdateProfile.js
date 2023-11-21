@@ -517,7 +517,7 @@ const handleDeleteSlot = async (e) => {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="4">No referrals found</td>
+                      <td colSpan="4">No data found</td>
                     </tr>
                   )}
                 </tbody>
