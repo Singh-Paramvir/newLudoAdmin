@@ -17,8 +17,12 @@ const Login7 = () => {
 
   async function fetchData() {
     try {
+      const bv = localStorage.getItem('buttonValue')
+      const data = {
+        SegId:bv
+      }
       const token = localStorage.getItem("token");
-      const res = await axios.post("api/totalUser", { token });
+      const res = await axios.post("api/totalUser", { token,data });
       const response = res.data;
       console.log(response, "response data!!!!!!!");
       console.log(response.data.data.totalUserCount,"total user from response");
@@ -31,10 +35,11 @@ const Login7 = () => {
 
   async function onSubmitHandler(event) {
     event.preventDefault();
-
+    const bv = localStorage.getItem('buttonValue')
     const date = emailRef.current.value;
     const data = {
       date,
+      SegId:bv
     };
 
     console.log(data, "data here");

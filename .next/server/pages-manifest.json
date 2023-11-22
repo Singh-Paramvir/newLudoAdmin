@@ -2,5 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/sociallink": "pages/api/sociallink.js"
+  "/dashboard": "pages/dashboard.js",
+  "/api/totalUser": "pages/api/totalUser.js"
 }
