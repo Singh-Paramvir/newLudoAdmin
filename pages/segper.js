@@ -1,6 +1,6 @@
 import React from 'react'
 // import UpdateProfile from '../Component/UpdateProfile'
-import SegPer from '../Component/segPer';
+import SegPer from '../Component/SegPer';
 
 const segper = () => {
   return (
