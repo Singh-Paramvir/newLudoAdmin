@@ -364,6 +364,7 @@ header .navbar-light .navbar-nav .nav-link {
     font-weight: 600;
 }
 
+
 .navbar-toggler {
     border: 1px solid black;
 }
@@ -1790,6 +1791,32 @@ sup {
     height: 38.28px;
     width: 38.28px;
     background-image: url(\/social1.png);
+    position: absolute;
+    top: 25%;
+    float: left;
+    background-size: cover;
+
+}
+.fourteen-sec::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    height: 38.28px;
+    width: 38.28px;
+    background-image: url(\/images.jpeg);
+    position: absolute;
+    top: 25%;
+    float: left;
+    background-size: cover;
+
+}
+.fifteen-sec::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    height: 38.28px;
+    width: 38.28px;
+    background-image: url(\/images.png);
     position: absolute;
     top: 25%;
     float: left;

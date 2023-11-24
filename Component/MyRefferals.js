@@ -1,41 +1,56 @@
-import React, { useEffect, useState,useRef } from "react";
-import Link from "next/link";
+import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Arrow from "../public/arrow.svg";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
-import { ToastContainer,toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 let moon;
 
 
 const MyRefferal = () => {
-  const firstRef = useRef();
-  const firstRef1 = useRef();
-  const [selectedUserId, setSelectedUserId] = useState(null); 
-  const [referrals, setReferrals] = useState([]); // Initialize as an empty array
+  const [referrals, setReferrals] = useState([]);
   const router = useRouter();
-  const [modalOpen, setModalOpen] = React.useState(false);
- 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [todayMatchCount, setTodayMatchCount] = useState(0);
+  const [totalMatchCount, setTotalMatchCount] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-
-  async function myReferrals() {
+  const myReferrals = async () => {
     try {
-     
       const token = localStorage.getItem("token");
-      const bv = localStorage.getItem('buttonValue')
+      const bv = localStorage.getItem("buttonValue");
       const data = {
-        buttonValue:bv
-      }
-      console.log(data,"dfdfdfdf");
-      let res = await axios.post("/api/myrefferals", { token: token,data });
+        buttonValue: bv,
+      };
+
+      setLoading(true);
+
+      const res = await axios.post("/api/myrefferals", { token: token, data });
       const response = res.data;
-      console.log(response.data, "to get the data from api");
-      setReferrals(response.data.data); // Update to access data property correctly
+
+      if (response.data.data.data2 && response.data.data.data2.length > 0) {
+        setTotalMatchCount(response.data.data.data2[0].total);
+      } else {
+        console.error("Data2 array is empty or undefined");
+      }
+
+      if (response.data.data.data1 && response.data.data.data1.length > 0) {
+        setTodayMatchCount(response.data.data.data1[0].total);
+      } else {
+        console.error("Data1 array is empty or undefined");
+      }
+
+      if (response.data.data.addSlote) {
+        setReferrals(response.data.data.addSlote);
+      } else {
+        console.error("addSlote data is empty or undefined");
+      }
     } catch (err) {
-      console.log(err);
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
-  }
+  };
+  
 // model 
 async function apiFunction(e) {
   try{
@@ -86,6 +101,34 @@ const handleAddChips3 = async (e) => {
   return (
     
     <div>
+      
+ {/* Loading indicator */}
+ {loading && (
+        <div
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+            backgroundColor: "#15a384", // Green background color
+            padding: "20px",
+            borderRadius: "10px",
+          }}
+         
+        >
+          <p style={{ color: "#fff" }}>Loading...</p>
+        </div>
+      )}
+<div className="row justify-content-center"></div>
+      <div style={{ marginBottom: "10px", backgroundColor: "#f8f9fa", padding: "10px", borderRadius: "1px" }}>
+              <h4 style={{ margin: 0, color: "#007bff" }}>Total Users: {todayMatchCount}</h4>
+            </div>
+            <div style={{ marginBottom: "10px", backgroundColor: "#f8f9fa", padding: "10px", borderRadius: "1px" }}>
+              <h4 style={{ margin: 0, color: "#007bff" }}>Today's Users: {totalMatchCount}</h4>
+            </div>
+
+
        {/* // delete user model */}
        <Modal toggle={() => setdeleteModelOpen(!modalOpen)} isOpen={modalOpen}>
   <div className="modal-header d-flex justify-content-between align-items-center m-0">

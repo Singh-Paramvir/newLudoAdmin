@@ -30,10 +30,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/dashboard.js"
     ],
-    "/total": [
+    "/myRefferals": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/total.js"
+      "static/chunks/pages/myRefferals.js"
+    ],
+    "/perfor": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/perfor.js"
     ]
   },
   "ampFirstPages": []

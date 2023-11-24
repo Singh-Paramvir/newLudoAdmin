@@ -108,8 +108,8 @@ const LinkPage = () => {
   }
 
   .segment-button.active {
-    background-color: green; /* Set the background color for the active button */
-    color: white; /* Set the text color for the active button */
+    background-color: #15a384;
+    color: white;
     /* Add any other styles you want for the active button */
   }
 `}</style>
@@ -185,6 +185,22 @@ const LinkPage = () => {
                         id="acc-item"
                       >
                         Advertisement
+                      </div>
+                    </Link>
+                    <Link href={"/segper"}>
+                      <div
+                        className="link-item fourteen-sec "
+                        id="thirds-item"
+                      >
+                        SEGMENT PERCENTAGE
+                      </div>
+                    </Link>
+                    <Link href={"/perfor"}>
+                      <div
+                        className="link-item fifteen-sec "
+                        id="thirds-item"
+                      >
+                        PERFORMANCE
                       </div>
                     </Link>
 

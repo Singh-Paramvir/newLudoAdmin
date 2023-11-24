@@ -118,7 +118,7 @@ const Advertisement = () => {
                 {/* <img className="stier-logo" src="/navbar/white-logo.png"></img> */}
 
                
-
+                <h3 className="item-text"> (Pending Page)</h3>
                 <br></br>
                 <div className="input-item mb-4" id="kyc-sec">
                   <h6 className="item-text"> Upload Home Image</h6>
