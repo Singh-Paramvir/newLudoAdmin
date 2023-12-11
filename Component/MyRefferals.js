@@ -193,21 +193,14 @@ const handleAddChips3 = async (e) => {
                     <th id="fuds" scope="col">
                       Name
                     </th>
-                    <th id="fuds" scope="col">
-                      ReferBy
-                    </th>
+                  
                     <th id="fuds" scope="col">
                       Balance
                     </th>
                     <th id="fuds" scope="col">
                       MobileNumber
                     </th>
-                    <th id="fuds" scope="col">
-                    Show_count
-                    </th>
-                    <th id="fuds" scope="col">
-                    Click_count
-                    </th>
+                 
                     <th id="fuds" scope="col">
                       Delete User
                     </th>
@@ -220,11 +213,9 @@ const handleAddChips3 = async (e) => {
     <tr key={referral._id}>
       <td>{index + 1}</td>
       <td>{referral.firstName}</td>
-      <td>{referral.refferedBy}</td>
       <td>{referral.balance}</td>
       <td>{referral.mobileNumber}</td>
-      <td>{referral.show_count}</td>
-      <td>{referral.click_count}</td>
+   
                         <td>
                           <Button
                             color="danger" // Use the danger color for the "Cut Chips" button
