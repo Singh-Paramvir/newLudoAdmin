@@ -1836,6 +1836,19 @@ sup {
     background-size: cover;
 
 }
+.acc-sec1::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    height: 38.28px;
+    width: 38.28px;
+    background-image: url(\/matchSort.png);
+    position: absolute;
+    top: 25%;
+    float: left;
+    background-size: cover;
+
+}
 
 #first-item {
     margin-left: 20px !important;

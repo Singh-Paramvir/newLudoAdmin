@@ -1,25 +1,20 @@
 import axios from 'axios';
-// import http from 'http';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      const { token} = req.body;
-      const {data} = req.body;
-      console.log(token, 'to be sent to the API!',data);
-
-      // const agent = new http.Agent({
-      //   rejectUnauthorized: false,
-      // });
+      const { token } = req.body;
+      const { data } = req.body;
+      console.log(token, 'to be sent to the API!', data);
 
       const config = {
+        timeout: 20000, // Set the timeout to 20 seconds
         method: 'post',
         url: 'http://airaicloud.com:6000/api/v1/admin/getalluser',
         headers: {
           Authorization: `Bearer ${token}`,
         },
         data,
-        // httpAgent: agent,
       };
 
       const response = await axios(config);
@@ -32,7 +27,7 @@ export default async function handler(req, res) {
       if (error.response) {
         res.status(error.response.status).json({ error: error.response.data });
       } else if (error.request) {
-        res.status(500).json({ error: 'No response received from the server' });
+        res.status(504).json({ error: 'Gateway Timeout: No response received from the server' });
       } else {
         res.status(500).json({ error: error.message });
       }

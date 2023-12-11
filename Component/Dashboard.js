@@ -203,6 +203,14 @@ const LinkPage = () => {
                         PERFORMANCE
                       </div>
                     </Link>
+                    <Link href={"/matchS"}>
+                      <div
+                        className="link-item acc-sec1 "
+                        id="acc-item"
+                      >
+                        SORT MATCHES
+                      </div>
+                    </Link>
 
                   </div>
 

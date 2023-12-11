@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       console.log(data,"data ");
       var config = {
         method: "post",
-        url: "http://airaicloud.com:6000/api/v1/admin//usercount",
+        url: "http://airaicloud.com:6000/api/v1/admin/usercount",
         headers:{
           'Authorization': `Bearer ${token}`,
       },data,

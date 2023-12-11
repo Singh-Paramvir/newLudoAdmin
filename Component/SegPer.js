@@ -137,7 +137,7 @@ const MyRefferal = () => {
                     cursor: "pointer",
                   }}
                 >
-                  <h2>(Pennding)</h2>
+                 
                   <img src={Arrow.src} onClick={() => router.back()} />
                 </span>
                
