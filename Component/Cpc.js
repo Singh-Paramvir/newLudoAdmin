@@ -51,7 +51,7 @@ const MyRefferal = () => {
     className="textinput mt-3"
     type="number"
     name="newPercentage"
-    placeholder="Enter New Percentage"
+    placeholder="Enter Days"
     value={newPercentage}
     onChange={handleInputChange}
     style={{ width: '150px', height: '30px', marginRight: '10px' }}
