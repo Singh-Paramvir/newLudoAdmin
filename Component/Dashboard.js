@@ -211,7 +211,14 @@ const LinkPage = () => {
                         SORT MATCHES
                       </div>
                     </Link>
-
+                    <Link href={"/cpc"}>
+                      <div
+                        className="link-item fifteen-sec "
+                        id="thirds-item"
+                      >
+                        CPC
+                      </div>
+                    </Link>
                   </div>
 
                 </div>

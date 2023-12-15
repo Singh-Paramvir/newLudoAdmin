@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       // });
       var config = {
         method: "post",
-        url: "http://airaicloud.com:6000/api/v1/admin/getseg",
+        url: "http://airaicloud.com:6000/api/v1/admin/getseg  ",
         headers:{
           'Authorization': `Bearer ${token}`,
       },data, 
