@@ -481,6 +481,12 @@ const handleDeleteSlot = async (e) => {
                       Fourth
                     </th>
                     <th id="fuds" scope="col">
+                      TotalPlay
+                    </th>
+                    <th id="fuds" scope="col">
+                      TimeDistance
+                    </th>
+                    <th id="fuds" scope="col">
                       Update
                     </th>
                     <th id="fuds" scope="col">
@@ -504,6 +510,8 @@ const handleDeleteSlot = async (e) => {
                         <td>{referral.second}</td>
                         <td>{referral.third}</td>
                         <td>{referral.fourth}</td>
+                        <td>{referral.totalPlay}</td>
+                        <td>{referral.timeToPlay}</td>
                         <td> <Button color="primary" type="button"
                           onClick={() => apiFunction(referral.id)}>
                           Update Slotes
