@@ -18,6 +18,8 @@ let first;
 let second;
 let third;
 let fourth;
+let totalPlay;
+let timeToPlay;
 
 const MyRefferal = () => {
 
@@ -36,6 +38,8 @@ const MyRefferal = () => {
   const second = useRef()
   const third = useRef()
   const fourth = useRef()
+  const totalPlay = useRef()
+  const timeToPlay = useRef()
     // Function to open the second modal
     const openModal1 = () => {
       console.log("Opening modal");
@@ -93,6 +97,8 @@ const MyRefferal = () => {
       second = second.current.value;
       third = third.current.value;
       fourth = fourth.current.value;
+      totalPlay = totalPlay.current.value;
+      timeToPlay = timeToPlay.current.value
   
       // Create an empty data object
       const data = {};
@@ -121,6 +127,12 @@ const MyRefferal = () => {
       }
       if (fourth !== null && fourth !== "") {
         data.fourth = fourth;
+      }
+      if (totalPlay !== null && totalPlay !== "") {
+        data.totalPlay = totalPlay;
+      }
+      if (timeToPlay !== null && timeToPlay !== "") {
+        data.timeToPlay = timeToPlay;
       }
   
       console.log(data, "moon hererererererere ");
@@ -283,6 +295,24 @@ const handleDeleteSlot = async (e) => {
             required
             ref={fourth}
           />
+           <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="totalPlay"
+            required
+            ref={totalPlay}
+          />
+            <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="timeToPlay"
+            required
+            ref={timeToPlay}
+          />
 
         </ModalBody>
         <ModalFooter>
@@ -379,6 +409,24 @@ const handleDeleteSlot = async (e) => {
             placeholder="Fourth"
             required
             ref={fourth}
+          />
+           <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="totalPlay"
+            required
+            ref={totalPlay}
+          />
+            <br></br>
+          <input
+            className="textinput mt-3"
+            type="number"
+            name="quantity"
+            placeholder="timeToPlay"
+            required
+            ref={timeToPlay}
           />
 
         </ModalBody>

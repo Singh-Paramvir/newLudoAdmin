@@ -15,11 +15,6 @@
     "static/development/_middlewareManifest.js"
   ],
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -30,10 +25,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/updateProfile": [
+    "/cpc": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/updateProfile.js"
+      "static/chunks/pages/cpc.js"
+    ],
+    "/perfor": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/perfor.js"
+    ],
+    "/userhis": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/userhis.js"
     ]
   },
   "ampFirstPages": []

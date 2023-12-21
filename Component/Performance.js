@@ -169,10 +169,10 @@ const MyRefferal = () => {
       <td>{referral.mobileNumber}</td>
       <td>{referral.balance}</td>
       <td>{referral.segmentType}</td>
-      <td>{referral.totalMatches}</td>    
-      <td>{referral.totalWins}</td>  
-      <td>{referral.totalLoses}</td> 
-      <td>   <Button color="primary" type="button" onClick={() => handleViewClick(referral.id, referral.mobileNumber)}>
+      <td>{referral.totalMatch}</td>    
+      <td>{referral.winMatch}</td>  
+<td>{referral.totalMatch - referral.winMatch}</td>
+ <td>   <Button color="primary" type="button" onClick={() => handleViewClick(referral.id, referral.mobileNumber)}>
                 View
               </Button></td>     
     </tr>
