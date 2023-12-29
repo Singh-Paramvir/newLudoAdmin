@@ -219,6 +219,14 @@ const LinkPage = () => {
                         CPC
                       </div>
                     </Link>
+                    <Link href={"/watchAdd"}>
+                      <div
+                        className="link-item sixteen-sec"
+                        id="thirds-item"
+                      >
+                        EXTRA ADDS
+                      </div>
+                    </Link>
                   </div>
 
                 </div>

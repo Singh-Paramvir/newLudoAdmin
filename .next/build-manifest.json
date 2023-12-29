@@ -25,20 +25,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/cpc": [
+    "/dashboard": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/cpc.js"
+      "static/chunks/pages/dashboard.js"
     ],
-    "/perfor": [
+    "/watchAdd": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/perfor.js"
-    ],
-    "/userhis": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/userhis.js"
+      "static/chunks/pages/watchAdd.js"
     ]
   },
   "ampFirstPages": []

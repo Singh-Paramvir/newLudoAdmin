@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Arrow from "../public/arrow.svg";
+
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import { ToastContainer,toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,6 +11,7 @@ let moon;
 let id;
 let percentage;
 const MyRefferal = () => {
+  const router = useRouter();
   const [newPercentage, setNewPercentage] = useState(""); // State for the new percentage input
   const [referrals, setReferrals] = useState([]); // Initialize as an empty array
 

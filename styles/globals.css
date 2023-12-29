@@ -1810,6 +1810,19 @@ sup {
     background-size: cover;
 
 }
+.sixteen-sec::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    height: 38.28px;
+    width: 38.28px;
+    background-image: url(\/watchAdd.jpeg);
+    position: absolute;
+    top: 25%;
+    float: left;
+    background-size: cover;
+
+}
 .fifteen-sec::before {
     content: "";
     display: flex;
