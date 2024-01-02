@@ -7,12 +7,14 @@ const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordRef1 = useRef();
+  const passwordRef2 = useRef();
 
   // use state
 
   const [currentChips1, setCurrentChips1] = useState(0);
   const [currentChips2, setCurrentChips2] = useState(0);
   const [currentChips3, setCurrentChips3] = useState(0);
+  const [currentChips4, setCurrentChips4] = useState(0);
 
   function handlePriceChange(event) {
     setCurrentChips1(event.target.value);
@@ -23,7 +25,9 @@ const Login = () => {
   function handlePriceChange2(event) {
     setCurrentChips3(event.target.value);
   }
- 
+  function handlePriceChange3(event) {
+    setCurrentChips4(event.target.value);
+  }
   
 
   useEffect(() => {
@@ -44,6 +48,7 @@ const Login = () => {
         setCurrentChips1(data.data.data[0].time);
         setCurrentChips2(data.data.data[0].amount);
         setCurrentChips3(data.data.data[0].perDay);
+        setCurrentChips4(data.data.data[0].countDownTime);
      
         console.log(buttonValue,"bvbvbvb");
       
@@ -70,11 +75,12 @@ const Login = () => {
     const time = emailRef.current.value;
     const amount = passwordRef.current.value;
     const perDay = passwordRef1.current.value;
+     const countDownTime = passwordRef2.current.value;
  
     const ID = localStorage.getItem('buttonValue')
      console.log(ID,"get id ");
     const data = {
-    time,amount,perDay
+    time,amount,perDay,countDownTime
      
     };
 
@@ -83,6 +89,7 @@ const Login = () => {
       console.log(token, "to get the token form local new one");
       const res = await axios.post("/api/updateadddata",{ token: token, data });
      console.log(res,"response");
+     
       setTimeout(() => {
         window.location.reload();
       }, 1000);
@@ -174,6 +181,19 @@ const Login = () => {
                     placeholder=""
                     required
                     onChange={handlePriceChange2} 
+                  />
+                </div>
+                <div className="input-item">
+                  <h6 className="item-text">COUNTDOWNTIME</h6>
+                  <input
+                    ref={passwordRef2}
+                    value={currentChips4}
+                    className="textinput"
+                    type="string"
+                    name="last-name"
+                    placeholder=""
+                    required
+                    onChange={handlePriceChange3} 
                   />
                 </div>
               
