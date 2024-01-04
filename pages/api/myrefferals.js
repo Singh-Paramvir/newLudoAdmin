@@ -8,6 +8,7 @@ export default async function handler(req, res) {
       console.log(token, 'to be sent to the API!', data);
 
       const config = {
+        responseLimit: false,
         timeout: 20000, // Set the timeout to 20 seconds
         method: 'post',
         url: 'http://airaicloud.com:6000/api/v1/admin/getalluser',
@@ -19,7 +20,7 @@ export default async function handler(req, res) {
 
       const response = await axios(config);
 
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
       res.status(200).json({ data: response.data });
     } catch (error) {
       console.error(error);

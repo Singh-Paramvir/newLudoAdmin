@@ -3,8 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/dashboard": "pages/dashboard.js",
-  "/api/login": "pages/api/login.js",
-  "/api/getadddata": "pages/api/getadddata.js",
-  "/api/updateadddata": "pages/api/updateadddata.js",
-  "/watchAdd": "pages/watchAdd.js"
+  "/myRefferals": "pages/myRefferals.js",
+  "/api/myrefferals": "pages/api/myrefferals.js"
 }

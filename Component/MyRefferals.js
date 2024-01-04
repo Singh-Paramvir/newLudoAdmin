@@ -200,6 +200,9 @@ const handleAddChips3 = async (e) => {
                     <th id="fuds" scope="col">
                       MobileNumber
                     </th>
+                    <th id="fuds" scope="col">
+                      RewardAdd
+                    </th>
                  
                     <th id="fuds" scope="col">
                       Delete User
@@ -215,6 +218,8 @@ const handleAddChips3 = async (e) => {
       <td>{referral.firstName}</td>
       <td>{referral.balance}</td>
       <td>{referral.mobileNumber}</td>
+      <td>{referral.EAWatch !== null ? referral.EAWatch : 0}</td>
+
    
                         <td>
                           <Button
