@@ -142,6 +142,9 @@ const MyRefferal = () => {
                     <th id="fuds" scope="col">
                       Total Match Slot 3
                     </th>
+                    <th id="fuds" scope="col">
+                      Total Match 
+                    </th>
                   </tr>
                 </thead>
 
@@ -154,6 +157,7 @@ const MyRefferal = () => {
                     <td>{referrals.gs1}</td>
                     <td>{referrals.gs2}</td>
                     <td>{referrals.gs3}</td>
+                    <td>{referrals.gs1 + referrals.gs2 + referrals.gs3}</td>
                   </tr>
                 </tbody>
               </table>
