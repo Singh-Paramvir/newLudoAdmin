@@ -152,7 +152,7 @@ const MyRefferal = () => {
                   <tr>
                     <td>1</td>
                     <td>{referrals.total}</td>
-                    <td>{referrals.a !== null ? referrals.a : 0}</td>
+                     <td>{referrals.cashAppDown}</td>
                     <td>{referrals.EAWatch}</td>
                     <td>{referrals.gs1}</td>
                     <td>{referrals.gs2}</td>
