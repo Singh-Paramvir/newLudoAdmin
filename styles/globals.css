@@ -13,6 +13,8 @@ div {
 }
 
 
+
+
 #fluid-set {
     justify-content: center !important;
 }
@@ -1817,6 +1819,19 @@ sup {
     height: 38.28px;
     width: 38.28px;
     background-image: url(\/watchAdd.jpeg);
+    position: absolute;
+    top: 25%;
+    float: left;
+    background-size: cover;
+
+}
+.seventeen-sec::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    height: 38.28px;
+    width: 38.28px;
+    background-image: url(\/ludoassets.jpeg);
     position: absolute;
     top: 25%;
     float: left;

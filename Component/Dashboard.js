@@ -131,6 +131,8 @@ const LinkPage = () => {
                 pauseOnHover
               />
 
+              
+
               <div className="col-head mt-3 text-center d-flex justify-content-center" id="col-head">
                 <h6 className="mb-0 mt-0" style={{ fontSize: "14px" }}>
                 </h6>
@@ -225,6 +227,14 @@ const LinkPage = () => {
                         id="thirds-item"
                       >
                         EXTRA ADDS
+                      </div>
+                    </Link>
+                    <Link href={"/allData"}>
+                      <div
+                        className="link-item seventeen-sec "
+                        id="acc-item"
+                      >
+                        Ludo Assets
                       </div>
                     </Link>
                   </div>
