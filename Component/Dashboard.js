@@ -237,6 +237,15 @@ const LinkPage = () => {
                         Ludo Assets
                       </div>
                     </Link>
+
+                    <Link href={"/notification"}>
+                      <div
+                        className="link-item fifteen-sec "
+                        id="thirds-item"
+                      >
+                        NOTIFICATION
+                      </div>
+                    </Link>
                   </div>
 
                 </div>
