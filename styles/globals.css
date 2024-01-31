@@ -695,12 +695,21 @@ sup {
     margin-left: 21px;
 }
 
-.profile-sec .input-sec .para-text {
+.profile-sec .input-sec  {
     font-size: 13px;
     padding-top: 20px;
     margin: 0;
 }
-
+.para-text {
+    font-size: 13px;
+    padding-top: 20px;
+    margin: 0;
+}
+.para-text :hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
 
 .profile-sec .input-sec .para-text a {
     font-size: 13px;
@@ -1825,6 +1834,34 @@ sup {
     background-size: cover;
 
 }
+.eighteen-sec::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    height: 38.28px;
+    width: 38.28px;
+    background-image: url(\/gamezop.png);
+    background-color: rgb(245, 160, 4);
+    position: absolute;
+    top: 25%;
+    float: left;
+    background-size: cover;
+    border-radius: 10px;
+
+}
+.nineteen-sec::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    height: 38.28px;
+    width: 38.28px;
+    background-image: url(\/link.png);
+    position: absolute;
+    top: 25%;
+    float: left;
+    background-size: cover;
+
+}
 .seventeen-sec::before {
     content: "";
     display: flex;
@@ -1838,6 +1875,7 @@ sup {
     background-size: cover;
 
 }
+
 .fifteen-sec::before {
     content: "";
     display: flex;
