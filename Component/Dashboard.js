@@ -246,6 +246,22 @@ const LinkPage = () => {
                         NOTIFICATION
                       </div>
                     </Link>
+                    <Link href={"/gamezop"}>
+                      <div
+                        className="link-item eighteen-sec"
+                        id="thirds-item"
+                      >
+                        GAMEZOP ADDS
+                      </div>
+                    </Link>
+                    <Link href={"/links"}>
+                      <div
+                        className="link-item nineteen-sec "
+                        id="acc-item"
+                      >
+                        LINKS
+                      </div>
+                    </Link>
                   </div>
 
                 </div>
