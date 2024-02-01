@@ -5,29 +5,17 @@ import { useRouter } from "next/router";
 let ID;
 const Login = () => {
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const passwordRef1 = useRef();
-  const passwordRef2 = useRef();
+ 
 
   // use state
 
   const [currentChips1, setCurrentChips1] = useState();
-  const [currentChips2, setCurrentChips2] = useState();
-  const [currentChips3, setCurrentChips3] = useState();
-  const [currentChips4, setCurrentChips4] = useState();
+
 
   function handlePriceChange(event) {
     setCurrentChips1(event.target.value);
   }
-  function handlePriceChange1(event) {
-    setCurrentChips2(event.target.value);
-  }
-  function handlePriceChange2(event) {
-    setCurrentChips3(event.target.value);
-  }
-  function handlePriceChange3(event) {
-    setCurrentChips4(event.target.value);
-  }
+ 
   
 
   useEffect(() => {
@@ -42,14 +30,12 @@ const Login = () => {
         // Make the API call to fetch the data
         let res = await axios.post("/api/getgamezop1", { token: token,data1 });
         const data = res.data; // Assuming the response contains chips and prices data
-        console.log(data.data,"9999999999999");
-        console.log(data.data.data[0].link,"?????");
+        console.log(data.data.data,"9999999999999");
+      
        
         // Update the state with the fetched data
-        setCurrentChips1(data.data.data[0].link);
-        setCurrentChips2(data.data.data[1].link);
-        setCurrentChips3(data.data.data[2].link);
-        setCurrentChips4(data.data.data[3].link);
+        setCurrentChips1(data.data.data);
+       
      
         console.log(buttonValue,"bvbvbvb");
       
@@ -74,14 +60,12 @@ const Login = () => {
     event.preventDefault();
 
     const first = emailRef.current.value;
-    const second = passwordRef.current.value;
-    const third = passwordRef1.current.value;
-     const fourth = passwordRef2.current.value;
+   
  
     const ID = localStorage.getItem('buttonValue')
      console.log(ID,"get id ");
     const data = {
-   first,second,third,fourth
+   first
      
     };
 
@@ -137,66 +121,29 @@ const Login = () => {
               pauseOnHover
             />
 
-            <form class="input-sec">
+            <form  style={{width:"500px"}}  class="input-sec">
               <div class="line profile-line"></div>
-              <h3 class="heading-text pink-text mt-2">EDIT IMAGES LINK</h3>
+              <h3 class="heading-text pink-text mt-2">EDIT GAMEZOP LINK</h3>
 
-              <div class="name-sec">
-                <div className="input-item">
-                  <h6 className="item-text">HOME SCREEN</h6>
-                  <input
-                    ref={emailRef}
-                    value={currentChips1}
-                    className="textinput"
-                    type="email"
-                    name="username"
-                    placeholder=""
-                    required
-                    onChange={handlePriceChange} 
-                  />
-                </div>
+              <div  className="name-sec">
+    <div className="input-item">
+      <br></br>
+        <h6 className="item-text">GAMEZOP LINK ARRAY</h6>
+        <textarea
+            style={{ height: "180px", margin: "15px 0px", }}
+            ref={emailRef}
+            value={currentChips1}
+            className="textinput"
+            name="username"
+            placeholder=""
+            required
+            onChange={handlePriceChange}
+        />
+    </div>
 
                
               </div>
-              <div className="input-item">
-                  <h6 className="item-text">MY BALANCE SCREEN</h6>
-                  <input
-                    ref={passwordRef}
-                    value={currentChips2}
-                    className="textinput"
-                    type="string"
-                    name="last-name"
-                    placeholder=""
-                    required
-                    onChange={handlePriceChange1} 
-                  />
-                </div>
-                <div className="input-item">
-                  <h6 className="item-text">WITHDRAW SCREEN</h6>
-                  <input
-                    ref={passwordRef1}
-                    value={currentChips3}
-                    className="textinput"
-                    type="string"
-                    name="last-name"
-                    placeholder=""
-                    required
-                    onChange={handlePriceChange2} 
-                  />
-                </div>
-                <div className="input-item">
-                  <h6 className="item-text">GAMEZOP</h6>
-                  <input
-                    ref={passwordRef2}
-                    value={currentChips4}
-                    className="textinput"
-                    type="string"
-                    name="last-name"
-                    placeholder=""
-                    required
-                    onChange={handlePriceChange3} 
-                  />
-                </div>
+             
               
               
               <a
