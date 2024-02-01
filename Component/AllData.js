@@ -127,11 +127,12 @@ const MyRefferal = () => {
                     <th id="fuds" scope="col">
                       Today Users
                     </th>
-                    <th id="fuds" scope="col">
-                      Cash App Total
-                    </th>
+                   
                     <th id="fuds" scope="col">
                       Daily Reward Total
+                    </th>
+                    <th id="fuds" scope="col">
+                      GameZope Total
                     </th>
                     <th id="fuds" scope="col">
                       Total Match Slot 1
@@ -145,21 +146,34 @@ const MyRefferal = () => {
                     <th id="fuds" scope="col">
                       Total Match 
                     </th>
+                    <th id="fuds" scope="col">
+                      Date 
+                    </th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>{referrals.total}</td>
-                     <td>{referrals.cashAppDown}</td>
-                    <td>{referrals.EAWatch}</td>
-                    <td>{referrals.gs1}</td>
-                    <td>{referrals.gs2}</td>
-                    <td>{referrals.gs3}</td>
-                    <td>{referrals.gs1 + referrals.gs2 + referrals.gs3}</td>
-                  </tr>
-                </tbody>
+          {Array.isArray(referrals) && referrals.length > 0 ? (
+            referrals.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{item.todayUsers}</td>
+                <td>{item.dailyRewardTotal}</td>
+                <td>{item.gamezopeTotal}</td>
+                <td>{item.totalMatchS1}</td>
+                <td>{item.totalMatchS2}</td>
+                <td>{item.totalMatchS3}</td>
+                <td>{item.totalMatch}</td>
+                <td>{item.createdAt ? item.createdAt.substring(0, 10) : ''}</td>
+
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="8">No data available</td>
+            </tr>
+          )}
+        </tbody>
               </table>
             </form>
           </div>
