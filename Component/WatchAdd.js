@@ -8,6 +8,7 @@ const Login = () => {
   const passwordRef = useRef();
   const passwordRef1 = useRef();
   const passwordRef2 = useRef();
+  const passwordRef5 = useRef();
 
   // use state
 
@@ -15,6 +16,7 @@ const Login = () => {
   const [currentChips2, setCurrentChips2] = useState(0);
   const [currentChips3, setCurrentChips3] = useState(0);
   const [currentChips4, setCurrentChips4] = useState(0);
+  const [currentChips5, setCurrentChips5] = useState(0);
 
   function handlePriceChange(event) {
     setCurrentChips1(event.target.value);
@@ -27,6 +29,9 @@ const Login = () => {
   }
   function handlePriceChange3(event) {
     setCurrentChips4(event.target.value);
+  }
+  function handlePriceChange4(event) {
+    setCurrentChips5(event.target.value);
   }
   
 
@@ -43,12 +48,13 @@ const Login = () => {
         let res = await axios.post("/api/getadddata", { token: token,data1 });
         const data = res.data; // Assuming the response contains chips and prices data
         console.log(data.data.data[0].perDay,"9999999999999");
-       
+         console.log(data.data);
         // Update the state with the fetched data
         setCurrentChips1(data.data.data[0].time);
         setCurrentChips2(data.data.data[0].amount);
         setCurrentChips3(data.data.data[0].perDay);
         setCurrentChips4(data.data.data[0].countDownTime);
+        setCurrentChips5(data.data.data[0].firstRewardAmount);
      
         console.log(buttonValue,"bvbvbvb");
       
@@ -76,11 +82,12 @@ const Login = () => {
     const amount = passwordRef.current.value;
     const perDay = passwordRef1.current.value;
      const countDownTime = passwordRef2.current.value;
+     const  firstRewardAmount=passwordRef5.current.value;
  
     const ID = localStorage.getItem('buttonValue')
      console.log(ID,"get id ");
     const data = {
-    time,amount,perDay,countDownTime
+    time,amount,perDay,countDownTime,firstRewardAmount
      
     };
 
@@ -194,6 +201,20 @@ const Login = () => {
                     placeholder=""
                     required
                     onChange={handlePriceChange3} 
+                  />
+                </div>
+
+                <div className="input-item">
+                  <h6 className="item-text">REGISTRATION AWARD AMOUNT</h6>
+                  <input
+                    ref={passwordRef5}
+                    value={currentChips5}
+                    className="textinput"
+                    type="string"
+                    name="last-name"
+                    placeholder=""
+                    required
+                    onChange={handlePriceChange4} 
                   />
                 </div>
               
