@@ -9,6 +9,7 @@ const Login = () => {
   const passwordRef1 = useRef();
   const passwordRef2 = useRef();
   const passwordRef5 = useRef();
+  const passwordRef6 = useRef();
 
   // use state
 
@@ -17,6 +18,7 @@ const Login = () => {
   const [currentChips3, setCurrentChips3] = useState(0);
   const [currentChips4, setCurrentChips4] = useState(0);
   const [currentChips5, setCurrentChips5] = useState(0);
+  const [currentChips6, setCurrentChips6] = useState(0);
 
   function handlePriceChange(event) {
     setCurrentChips1(event.target.value);
@@ -33,7 +35,9 @@ const Login = () => {
   function handlePriceChange4(event) {
     setCurrentChips5(event.target.value);
   }
-  
+  function handlePriceChange5(event) {
+    setCurrentChips6(event.target.value);
+  }
 
   useEffect(() => {
     // Function to fetch the current chips and prices from the server
@@ -55,6 +59,7 @@ const Login = () => {
         setCurrentChips3(data.data.data[0].perDay);
         setCurrentChips4(data.data.data[0].countDownTime);
         setCurrentChips5(data.data.data[0].firstRewardAmount);
+        setCurrentChips6(data.data.data[0].dailyRewardAmount);
      
         console.log(buttonValue,"bvbvbvb");
       
@@ -83,11 +88,12 @@ const Login = () => {
     const perDay = passwordRef1.current.value;
      const countDownTime = passwordRef2.current.value;
      const  firstRewardAmount=passwordRef5.current.value;
+      const dailyRewardAmount = passwordRef6.current.value
  
     const ID = localStorage.getItem('buttonValue')
      console.log(ID,"get id ");
     const data = {
-    time,amount,perDay,countDownTime,firstRewardAmount
+    time,amount,perDay,countDownTime,firstRewardAmount,dailyRewardAmount
      
     };
 
@@ -215,6 +221,20 @@ const Login = () => {
                     placeholder=""
                     required
                     onChange={handlePriceChange4} 
+                  />
+                </div>
+
+                <div className="input-item">
+                  <h6 className="item-text">DAILY AWARD AMOUNT</h6>
+                  <input
+                    ref={passwordRef6}
+                    value={currentChips6}
+                    className="textinput"
+                    type="string"
+                    name="last-name"
+                    placeholder=""
+                    required
+                    onChange={handlePriceChange5} 
                   />
                 </div>
               
