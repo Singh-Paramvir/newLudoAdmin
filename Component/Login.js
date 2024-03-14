@@ -1,130 +1,154 @@
-import React, { useEffect, useState,useRef } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import axios from "axios";
-import Arrow from "../public/arrow.svg";
-import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
-import { ToastContainer,toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-let moon;
-let id;
+import React, { useRef } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { useRouter } from "next/router";
 
-const MyRefferal = () => {
-  const firstRef = useRef();
-  const firstRef1 = useRef();
-  const [selectedUserId, setSelectedUserId] = useState(null); 
-  const [referrals, setReferrals] = useState([]); // Initialize as an empty array
-  const router = useRouter();
-  const [modalOpen, setModalOpen] = React.useState(false);
- 
+const Login = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const router = useRouter(); // this route helps us to going next page
 
-
-  async function myReferrals() {
+  async function login(data) {
+    console.log(data, "from send");
     try {
-      let buttonValue = localStorage.getItem('buttonValue')
-      const data ={
-        buttonValue
-      }
-      const token = localStorage.getItem("token");
-   
-      let res = await axios.post("/api/getapproverequest", { token: token,data });
+      const res = await axios.post("api/login", data);
       const response = res.data;
-      console.log(response.data, "to get the data from api");
-      setReferrals(response.data.data); // Update to access data property correctly
+      console.log(response, "response data aya ure");
+      // console.log(response.data.data.xx.data, "to check the token for storage")
+      localStorage.setItem('token', response.data.data)
+      localStorage.setItem('buttonValue', 0)
+
+      notify("User Login Successfully");
+      setTimeout(() => {
+        router.push("/dashboard"); // here we are going to next page
+      }, 1000);
     } catch (err) {
+      notifyError("Please Check Email or Password");
       console.log(err);
     }
   }
-// model 
 
 
+  function onSubmitHandler(event) {
+    event.preventDefault();
 
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
 
-  useEffect(() => {
-    myReferrals();
-  }, []);
+    const data = {
+      email,
+      password,
+    };
+
+    console.log(data, "data here");
+
+    login(data);
+  }
+
+  function forgotHandler(event) {
+console.log("yes fun hit");
+  }
+
+  const notify = (msg) =>
+    toast.success(msg, {
+      position: "top-right",
+      autoClose: 6000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  const notifyError = (msg) =>
+    toast.error(msg, {
+      position: "top-right",
+      autoClose: 6000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   return (
-    
     <div>
-     
-      <section className="profile-sec">
-        <div className="container">
-          <div className="row justify-content-center">
-            <form className="input-sec" id="ref-code">
-              <h3 className="heading-text pink-text mt-2">
-                <span
-                  className="arrows-icon"
-                  id="left-rfset"
-                  style={{
-                    position: "relative",
-                    left: "-44%",
-                    cursor: "pointer",
-                  }}
-                >
-                  <img src={Arrow.src} onClick={() => router.back()} />
-                </span>
-                Approved 
-              </h3>
+      <section class="profile-sec pb-0">
+        <div class="container">
+          <div class="row justify-content-center">
+            <ToastContainer
+              position="top-right"
+              autoClose={6000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
 
-              <table className="table funds-table mt-3" id="funds-color">
-                <thead>
-                  <tr>
-                    <th id="fuds" scope="col">
-                      Sr. No.
-                    </th>
-                    <th id="fuds" scope="col">
-                      Name
-                    </th>
-                    <th id="fuds" scope="col">
-                      Email
-                    </th>
-                    <th id="fuds" scope="col">
-                      Fee
-                    </th>
-                    <th id="fuds" scope="col">
-                      PaymentMethod
-                    </th>
-                    <th id="fuds" scope="col">
-                    TotalAmont
-                    </th>
-                    <th id="fuds" scope="col">
-                    TransactionId
-                    </th>
-                   
-                  </tr>
-                </thead>
+            <form class="input-sec">
+              <div class="line profile-line"></div>
+              <h3 class="heading-text pink-text mt-2"> LOGIN ADMIN</h3>
 
-                <tbody>
-{referrals.length > 0 ? (
-  referrals.map((referral, index) => (
-    <tr key={referral._id}>
-      <td>{index + 1}</td>
-      <td>{referral.firstName}</td>
-      <td>{referral.mobileNumber}</td>
-      <td>{referral.money}</td>
-      <td>{referral.paymentMethod}</td>
-      <td>{referral.totalAmount}</td>
-      <td>{referral.transactionId}</td>
-                     
-    </tr>
-    
-  ))
-) : (
-  <tr>
-    <td colSpan="4">No data found</td>
-  </tr>
-)}
-</tbody>
-              </table>
+              <div class="name-sec">
+                <div className="input-item">
+                  <h6 className="item-text">EMAIL</h6>
+                  <input
+                    ref={emailRef}
+                    className="textinput"
+                    type="email"
+                    name="username"
+                    placeholder="Enter your Email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="input-item">
+                <h6 className="item-text">PASSWORD</h6>
+                <input
+                  ref={passwordRef}
+                  className="textinput"
+                  type="password"
+                  name="last-name"
+                  placeholder="Enter your Password"
+                  required
+                />
+              </div>
+
+
+              <a
+                href="funds-page.html"
+                class="btn btn-round btn-warning w-100 "
+                style={{ marginTop: "126px", marginBottom: "20px" }}
+                type="button"
+                onClick={onSubmitHandler}
+              >
+                CONTINUE
+              </a>
+
+              <p
+                className="para-text"
+                onClick={forgotHandler}
+                style={{
+                  // cursor: "pointer", // Change mouse pointer
+             
+                }}
+              >
+                Forgot Password?{" "}
+                <span style={{ fontWeight: "600" }}>FORGOT</span>
+              </p>
+
             </form>
           </div>
         </div>
       </section>
+
+      <script src="js/bootstrap.bundle.js"></script>
     </div>
-    // model
-    
   );
 };
 
-export default MyRefferal;
+export default Login;

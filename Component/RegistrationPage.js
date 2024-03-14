@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useRef,useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
 
@@ -8,15 +8,20 @@ const Login = () => {
   const passwordRef = useRef();
   const router = useRouter(); // this route helps us to going next page
 
+
+  useEffect(() => {
+    window.localStorage.clear();
+  }, []);
+
   async function login(data) {
-    console.log(data,"from send");
+    console.log(data, "from send");
     try {
       const res = await axios.post("api/login", data);
       const response = res.data;
       console.log(response, "response data aya ure");
       // console.log(response.data.data.xx.data, "to check the token for storage")
       localStorage.setItem('token', response.data.data)
-      localStorage.setItem('buttonValue',0)
+      localStorage.setItem('buttonValue', 0)
 
       notify("User Login Successfully");
       setTimeout(() => {
@@ -27,7 +32,7 @@ const Login = () => {
       console.log(err);
     }
   }
-  
+
 
   function onSubmitHandler(event) {
     event.preventDefault();
@@ -43,6 +48,10 @@ const Login = () => {
     console.log(data, "data here");
 
     login(data);
+  }
+
+  function forgotHandler(event) {
+console.log("yes fun hit");
   }
 
   const notify = (msg) =>
@@ -100,20 +109,20 @@ const Login = () => {
                     required
                   />
                 </div>
-                </div>
+              </div>
 
-                <div className="input-item">
-                  <h6 className="item-text">PASSWORD</h6>
-                  <input
-                    ref={passwordRef}
-                    className="textinput"
-                    type="password"
-                    name="last-name"
-                    placeholder="Enter your Password"
-                    required
-                  />
-                </div>
-             
+              <div className="input-item">
+                <h6 className="item-text">PASSWORD</h6>
+                <input
+                  ref={passwordRef}
+                  className="textinput"
+                  type="password"
+                  name="last-name"
+                  placeholder="Enter your Password"
+                  required
+                />
+              </div>
+
 
               <a
                 href="funds-page.html"
@@ -125,12 +134,18 @@ const Login = () => {
                 CONTINUE
               </a>
 
-              <p className="para-text"
-              //  onClick={forgotHandler}
-               >
+              <p
+                className="para-text"
+                onClick={forgotHandler}
+                style={{
+                  // cursor: "pointer", // Change mouse pointer
+             
+                }}
+              >
                 Forgot Password?{" "}
                 <span style={{ fontWeight: "600" }}>FORGOT</span>
               </p>
+
             </form>
           </div>
         </div>

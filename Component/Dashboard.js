@@ -3,20 +3,39 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const LinkPage = () => {
   const [selectedSegment, setSelectedSegment] = useState(null);
-  const [usdAmt, setUsdAmt] = useState();
-  const [name, setName] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
-    // Load the stored segment value from localStorage on component mount
+    const checkToken = localStorage.getItem('token');
+   
+    if(!checkToken){
+      router.push("/");
+    }
+   
     const storedSegment = localStorage.getItem('buttonValue');
     if (storedSegment) {
       setSelectedSegment(storedSegment);
     }
+  }, []);
+
+  useEffect(() => {
+    const handleBackButtonClick = () => {
+      localStorage.clear();
+    };
+
+    const backButton = document.querySelector(".back-button");
+    if (backButton) {
+      backButton.addEventListener("click", handleBackButtonClick);
+    }
+
+    return () => {
+      if (backButton) {
+        backButton.removeEventListener("click", handleBackButtonClick);
+      }
+    };
   }, []);
 
   const handleButtonClick = async (buttonValue) => {
@@ -24,11 +43,6 @@ const LinkPage = () => {
       try {
         console.log("Button value:", buttonValue);
         localStorage.setItem('buttonValue',buttonValue)
-
-                //const response = await axios.post('your-api-endpoint', { segment: selectedSegment });
-
-        // Handle the API response as needed
-        // console.log(response.data);
       } catch (error) {
         console.error('Error making API call:', error);
       }
@@ -43,7 +57,6 @@ const LinkPage = () => {
   };
   function onSubmitHandler(event) {
     event.preventDefault();
-    // You can add additional form submission logic here if needed
   }
 
   return (
@@ -57,7 +70,7 @@ const LinkPage = () => {
                 {/* Welcome NAME ! */}
                 <strong style={{ marginBottom: "10px !important" }}>
                   {" "}
-                  Welcome {name?.firstName} !{" "}
+                  Welcome Admin!
                 </strong>{" "}
                 <br /> <br />
                 Hey there, Ludo fanatics! Get ready to roll the dice and dive into an epic journey of strategy and fun. As the game's master, I'm here to ensure your Ludo adventure is packed with excitement and challenges. Let's roll, move those pieces, and aim for victory together!

@@ -68,14 +68,14 @@ const Navbar = () => {
 
                   {/* {!session ? ( */}
                     <li className="nav-item">
-                      <Link href={"/login"}>
-                        <button
+                      {/* <Link href={"/login"}> */}
+                        <button onClick={logOutHandler}
                           className="btn btn-outline-success border-btn"
                           type="submit"
                         >
                           LOGIN / SIGNUP
                         </button>
-                      </Link>
+                      {/* </Link> */}
                     </li>
                   {/* ): null} */}
                 
