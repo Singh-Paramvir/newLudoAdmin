@@ -1,13 +1,15 @@
 import axios from "axios";
-import React, { useRef,useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const router = useRouter(); // this route helps us to going next page
-
+  const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter(); // this route helps us to go to the next page
 
   useEffect(() => {
     window.localStorage.clear();
@@ -19,20 +21,18 @@ const Login = () => {
       const res = await axios.post("api/login", data);
       const response = res.data;
       console.log(response, "response data aya ure");
-      // console.log(response.data.data.xx.data, "to check the token for storage")
-      localStorage.setItem('token', response.data.data)
-      localStorage.setItem('buttonValue', 0)
+      localStorage.setItem("token", response.data.data);
+      localStorage.setItem("buttonValue", 0);
 
       notify("User Login Successfully");
       setTimeout(() => {
-        router.push("/dashboard"); // here we are going to next page
+        router.push("/dashboard"); // here we are going to the next page
       }, 1000);
     } catch (err) {
       notifyError("Please Check Email or Password");
       console.log(err);
     }
   }
-
 
   function onSubmitHandler(event) {
     event.preventDefault();
@@ -51,8 +51,12 @@ const Login = () => {
   }
 
   function forgotHandler(event) {
-console.log("yes fun hit");
+    console.log("yes fun hit");
   }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const notify = (msg) =>
     toast.success(msg, {
@@ -111,41 +115,49 @@ console.log("yes fun hit");
                 </div>
               </div>
 
-              <div className="input-item">
+              <div className="input-item password-input">
                 <h6 className="item-text">PASSWORD</h6>
-                <input
-                  ref={passwordRef}
-                  className="textinput"
-                  type="password"
-                  name="last-name"
-                  placeholder="Enter your Password"
-                  required
-                />
+                <div className="password-wrapper">
+                  <input
+                    ref={passwordRef}
+                    className={`textinput ${showPassword ? 'password-visible' : ''}`}
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Enter your Password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle-btn"
+                    onClick={togglePasswordVisibility}
+                  >
+                    {showPassword ? (
+                      <FontAwesomeIcon icon={faEyeSlash} />
+                    ) : (
+                      <FontAwesomeIcon icon={faEye} />
+                    )}
+                  </button>
+                </div>
               </div>
 
-
-              <a
-                href="funds-page.html"
-                class="btn btn-round btn-warning w-100 "
+              <button
+                class="btn btn-round btn-warning w-100"
                 style={{ marginTop: "126px", marginBottom: "20px" }}
                 type="button"
                 onClick={onSubmitHandler}
               >
                 CONTINUE
-              </a>
+              </button>
 
               <p
                 className="para-text"
                 onClick={forgotHandler}
                 style={{
                   // cursor: "pointer", // Change mouse pointer
-             
                 }}
               >
-                Forgot Password?{" "}
-                <span style={{ fontWeight: "600" }}>FORGOT</span>
+                Forgot Password? <span style={{ fontWeight: "600" }}>FORGOT</span>
               </p>
-
             </form>
           </div>
         </div>
