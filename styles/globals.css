@@ -37,7 +37,25 @@ div {
 .mukan {
    
     margin-top: -4px !important;}
-
+    
+    .password-wrapper {
+        position: relative;
+      }
+      
+      .password-toggle-btn {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+      }
+      
+      .password-toggle-btn:focus {
+        outline: none;
+      }
+      
+      
 
 .btn-check:focus + .btn, .btn:focus {
     outline: 0;
