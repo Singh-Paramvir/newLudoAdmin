@@ -55,8 +55,9 @@ const MyRefferal = () => {
       }
       let res = await axios.post("/api/updateProfile", { token: token,data }); 
       const response = res.data;
-      console.log(response.data, "to get the data from api");
-      setReferrals(response.data.data); // Update to access data property correctly
+     console.log(response.data, "to get the data from api");
+const sortedData = response.data.data.sort((a, b) => a.type - b.type);
+setReferrals(sortedData);
     } catch (err) {
       console.log(err);
     }
