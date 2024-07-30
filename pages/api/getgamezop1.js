@@ -15,7 +15,7 @@ console.log(data, "data");
       // });
       var config = {
         method: "post",
-        url: "http://airaicloud.com:6000/api/v1/admin/getlinks",
+        url: "http://192.168.29.57:6000/api/v1/admin/getlinks",
         headers: {
           'Authorization': `Bearer ${token}`
         },data,

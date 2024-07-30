@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       // });
       var config = {
         method: "post",
-        url: "http://airaicloud.com:6000/api/v1/admin/getapproverequest",
+        url: "http://192.168.29.57:6000/api/v1/admin/getapproverequest",
         headers:{
           'Authorization': `Bearer ${token}`,
       },data,

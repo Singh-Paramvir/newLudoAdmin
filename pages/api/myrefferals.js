@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         responseLimit: false,
         timeout: 20000, // Set the timeout to 20 seconds
         method: 'post',
-        url: 'http://airaicloud.com:6000/api/v1/admin/getalluser',
+        url: 'http://192.168.29.57:6000/api/v1/admin/getalluser',
         headers: {
           Authorization: `Bearer ${token}`,
         },

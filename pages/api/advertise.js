@@ -11,7 +11,7 @@ export default async function handler(req, res) {
      
       var config = {
             method: "post",
-            url: "http://airaicloud.com:6000/api/v1/image1/addadvertisement",
+            url: "http://192.168.29.57:6000/api/v1/image1/addadvertisement",
             headers: {
               "Content-Type": "multipart/form-data",
               Authorization: `Bearer ${token}`,
